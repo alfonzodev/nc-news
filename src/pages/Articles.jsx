@@ -10,9 +10,7 @@ const Articles = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-        console.log("inside fetch Data");
       const articlesData = await fetchArticles();
-      console.log(articlesData, "<--- articles data inside fetch Data");
       setArticles(articlesData.articles);
     };
     fetchData();
