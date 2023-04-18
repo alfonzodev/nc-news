@@ -12,9 +12,9 @@ const Articles = () => {
     const fetchData = async () => {
       const articlesData = await fetchArticles();
       setArticles(articlesData.articles);
+      setIsLoading(false);
     };
     fetchData();
-    setIsLoading(false);
   }, []);
 
   if (isLoading) {
