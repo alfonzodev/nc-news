@@ -20,7 +20,7 @@ const Articles = () => {
 
   if (isLoading) return <LoadingBanner typeOfData={'articles'}/>
   return(
-    <div className="Articles">
+    <div className="articles">
         <h1 className="heading-l">Articles</h1>
         <ArticlesList articles={articles}/>
     </div>

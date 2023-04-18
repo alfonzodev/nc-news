@@ -14,10 +14,10 @@ const Header = () => {
       </Link>
       <div className="nav-btn-container">
         <Link>
-          <button className="nav-btn">Login</button>
+          <button className="btn nav-btn">Login</button>
         </Link>
         <Link>
-          <button className="nav-btn">Register</button>
+          <button className="btn nav-btn">Register</button>
         </Link>
       </div>
     </header>

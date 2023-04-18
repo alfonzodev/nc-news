@@ -27,7 +27,7 @@ const SingleArticle = () => {
   if (isLoading) return <LoadingBanner typeOfData={"article"} />;
 
   return (
-    <>
+    <div className="single-article">
       <section className="article-section">
         <header className="article-header">
           <h1 className="heading-m">{article.title}</h1>
@@ -52,7 +52,7 @@ const SingleArticle = () => {
         <h2>Comments</h2>
         <CommentsList articleId={article_id}/>
       </section>
-    </>
+    </div>
   );
 };
 
