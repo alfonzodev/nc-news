@@ -27,7 +27,7 @@ const Articles = () => {
   }
   return(
     <div className="Articles">
-        <h1>Articles</h1>
+        <h1 className="heading-l">Articles</h1>
         <ArticlesList articles={articles}/>
     </div>
   );
