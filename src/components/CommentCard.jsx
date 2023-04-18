@@ -4,8 +4,8 @@ const CommentCard = ({ comment }) => {
   return (
     <li className="comment-card">
       <div className="comment-header">
-        <span className="author-span">{comment.author}</span>
-        <span className="comment-date">{timestampToDate(comment.created_at)}</span>
+        <p className="comment-author">{comment.author}</p>
+        <p className="comment-date">{timestampToDate(comment.created_at)}</p>
       </div>
       <div className="comment-container">
         <div className="comment-voting-container">
