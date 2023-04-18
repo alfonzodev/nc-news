@@ -11,8 +11,8 @@ const Articles = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const articlesData = await fetchArticles();
-      setArticles(articlesData.articles);
+      const response = await fetchArticles();
+      setArticles(response.articles);
       setIsLoading(false);
     };
     fetchData();

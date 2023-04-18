@@ -106,7 +106,7 @@ body {
 
 /* Single Article Page */
 
-.article-section {
+.article-section, .comments-section, .article-votes-section {
   width: 90%;
   margin: 3rem auto;
 }
@@ -120,12 +120,6 @@ body {
   max-width: 100%;
 }
 
-/* ----- Comments  ----- */
-/* Comments Section */
-.comments-section {
-  width: 90%;
-  margin: 0 auto;
-}
 
 /* Comments List */
 .comments-list {
@@ -158,6 +152,29 @@ body {
     padding: 1.5rem;
     border-radius: 15px;
 }
+
+/* Article Rating */
+
+.article-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:fit-content;
+}
+
+.btn-article-vote {
+  border: 1px solid var(--clr-dark);
+  width: 2rem;
+  height: 2rem;
+  padding: .5rem;
+  background-color: rgba(158, 158, 158, 0.05);
+}
+
+.article-vote-count {
+  height: 2rem;
+  text-align: center;
+}
+
 
 /* Utility classes */
 
