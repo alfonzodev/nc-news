@@ -24,113 +24,152 @@ body {
 
 /* Navbar */
 .navbar {
-    width: 100%;
-    height: 100px;
-    padding: 1rem 2.5rem;
-    margin-bottom: 2rem;
-    background-color: var(--clr-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 1rem 2.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--clr-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
 }
 
-#logo-icon, #logo-text {
-    color: var(--clr-light);
+#logo-icon,
+#logo-text {
+  color: var(--clr-light);
 }
 
 #logo-icon {
-    display: flex;
-    align-items: center;
-    font-size: 3rem;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
 }
 
 #logo-text {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 /* Articles List */
-.Articles h1{
-    text-align: center;
+.Articles h1 {
+  text-align: center;
 }
 
 .articles-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  width: 100%;
 }
 
 /* Article Card */
-.article-card{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    row-gap: 1rem;
-    border: 2px solid var(--clr-dark);
-    border-radius: 5px;
-    width: 300px;
-    height: 420px;
-    margin: .25rem .5rem;
-    padding: .75rem 1rem;
+.article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  row-gap: 1rem;
+  border: 2px solid var(--clr-dark);
+  border-radius: 5px;
+  width: 300px;
+  height: 420px;
+  margin: 0.25rem 0.5rem;
+  padding: 0.75rem 1rem;
 }
 
-.article-card h1{
-    text-align: center;
-    margin: 0;
+.article-card h1 {
+  text-align: center;
+  margin: 0;
 }
 .article-card .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20%; 
-    width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  width: 90%;
 }
 
 .article-card .img-container {
-    width: 90%;
+  width: 90%;
 }
 .article-card img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /* Single Article Page */
 
 .article-section {
-    width: 90%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 3rem auto;
 }
-.article-img-container{
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
+.article-img-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
 .article-img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
+/* ----- Comments  ----- */
+/* Comments Section */
+.comments-section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Comments List */
+.comments-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  row-gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Comment Card */
+.comment-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+    padding:0 1rem;
+}
+.comment-body {
+    border: 1px solid var(--clr-dark);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
 
 /* Utility classes */
 
 .heading-m,
 .heading-l,
-.heading-xl{
-    font-family: var(--ff-headings);
+.heading-xl {
+  font-family: var(--ff-headings);
 }
 
 .heading-m {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 .heading-l {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }

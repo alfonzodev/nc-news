@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
 
 import ArticlesList from "../components/ArticlesList";
+import LoadingBanner from "../components/LoadingBanner";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -17,14 +18,7 @@ const Articles = () => {
     fetchData();
   }, []);
 
-  if (isLoading) {
-    return (
-      <div className="loading-banner">
-        <p>Loading...</p>
-        <p>Please wait while we fetch your articles.</p>
-      </div>
-    );
-  }
+  if (isLoading) return <LoadingBanner typeOfData={'articles'}/>
   return(
     <div className="Articles">
         <h1 className="heading-l">Articles</h1>
