@@ -1,51 +1,74 @@
 import { useState, useEffect } from "react";
 import { incrementArticleVotes } from "../api";
 
-const ArticleRating = ({articleId, articleVotes}) => {
-    const [votes, setVotes] = useState(articleVotes);
-    const [hasVotedUp, setHasVotedUp] = useState(null);
-    const [increment, setIncrement] = useState(0);
-    const [error, setError] = useState(null);
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-    useEffect(() => {
-        const postData = async () => {
-            const response = await incrementArticleVotes(articleId, increment);
-            if(response.hasOwnProperty('msg')) setError(response.msg)
-        }
-        postData();
-    }, [votes, increment, articleId])
+const ArticleRating = ({ articleId, articleVotes }) => {
+  const [votes, setVotes] = useState(articleVotes);
+  const [incVotes, setIncVotes] = useState(0);
+  const [hasVotedUp, setHasVotedUp] = useState(false);
+  const [hasVotedDown, setHasVotedDown] = useState(false);
 
-    const handleClick = (vote) => {
-        if(hasVotedUp === false && vote === 1){
-            setVotes((votes) => votes + vote);
-            setIncrement(vote)
-            setHasVotedUp(true)
-        }
-        else if(hasVotedUp === true && vote === -1){
-            setVotes((votes) => votes + vote);
-            setIncrement(vote)
-            setHasVotedUp(false)
-        }else if(hasVotedUp === null && vote === 1){
-            setVotes((votes) => votes + vote);
-            setIncrement(vote)
-            setHasVotedUp(true)
-        }else if(hasVotedUp === null && vote === -1){
-            setVotes((votes) => votes + vote);
-            setIncrement(vote)
-            setHasVotedUp(false)
-        }
-        console.log(votes, "<-- votes");
+  useEffect(() => {
+    // Prevent incrementArticleVotes() from executing on first render
+    if (incVotes !== 0) {
+      incrementArticleVotes(articleId, incVotes)
+        .then()
+        .catch((err) => {
+          toast.error("Article voting failed.");
+          // reset votes in UI
+          setVotes(articleVotes);
+        });
     }
-  return (<>
-    <h2>Article Votes</h2>
-    {error && <p>{error}</p>}
-    <div className="article-rating">
-        <button className="btn-article-vote" onClick={() => {handleClick(-1)}}>-</button>
-        <input type="text" className="article-vote-count" value={votes} disabled={true}/>
-        <button className="btn-article-vote" onClick={() => {handleClick(1)}}>+</button>
-    </div>
-  </>
-  )
-}
+  }, [incVotes, articleVotes, articleId]);
 
-export default ArticleRating
+  const incrementVote = () => {
+    setVotes((votes) => votes + 1);
+    setIncVotes(1);
+    setHasVotedUp(true);
+    setHasVotedDown(false);
+  };
+  
+  const decrementVote = () => {
+    setVotes((votes) => votes - 1);
+    setIncVotes(-1);
+    setHasVotedDown(true);
+    setHasVotedUp(false);
+  };
+
+  return (
+    <>
+      <h2>Article Votes</h2>
+      <div className="article-rating">
+        <button
+          className="btn-article-vote"
+          onClick={() => {
+            decrementVote();
+          }}
+          disabled={hasVotedDown}
+        >
+          -
+        </button>
+        <input
+          type="text"
+          className="article-vote-count"
+          value={votes}
+          disabled={true}
+        />
+        <button
+          className="btn-article-vote"
+          onClick={() => {
+            incrementVote();
+          }}
+          disabled={hasVotedUp}
+        >
+          +
+        </button>
+      </div>
+      <ToastContainer />
+    </>
+  );
+};
+
+export default ArticleRating;
