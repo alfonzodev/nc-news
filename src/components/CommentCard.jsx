@@ -1,9 +1,11 @@
+import { timestampToDate } from "../utils/utils";
+
 const CommentCard = ({ comment }) => {
   return (
     <li className="comment-card">
       <div className="comment-header">
         <span className="author-span">{comment.author}</span>
-        <span className="comment-date">{comment.created_at}</span>
+        <span className="comment-date">{timestampToDate(comment.created_at)}</span>
       </div>
       <div className="comment-container">
         <div className="comment-voting-container">

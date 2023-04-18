@@ -5,6 +5,8 @@ import { fetchArticleById } from "../api";
 import LoadingBanner from "../components/LoadingBanner";
 import CommentsList from "../components/CommentsList";
 
+import {timestampToDate} from "../utils/utils.js"
+
 const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState(null);
@@ -28,7 +30,7 @@ const SingleArticle = () => {
       <section className="article-section">
         <header className="article-header">
           <h1 className="heading-m">{article.title}</h1>
-          <p className="article-date">{article.created_at}</p>
+          <p className="article-date">Posted on: {timestampToDate(article.created_at)}</p>
           <p className="article-author">Author: {article.author}</p>
         </header>
         <div className="article-img-container">
