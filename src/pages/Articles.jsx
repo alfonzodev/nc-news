@@ -12,9 +12,9 @@ const Articles = () => {
     const fetchData = async () => {
       const articlesData = await fetchArticles();
       setArticles(articlesData.articles);
+      setIsLoading(false);
     };
     fetchData();
-    setIsLoading(false);
   }, []);
 
   if (isLoading) {
@@ -27,7 +27,7 @@ const Articles = () => {
   }
   return(
     <div className="Articles">
-        <h1>Articles</h1>
+        <h1 className="heading-l">Articles</h1>
         <ArticlesList articles={articles}/>
     </div>
   );
