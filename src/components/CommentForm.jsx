@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postComment } from "../api";
+
+import { UserContext } from "../context/UserContext";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,14 +10,20 @@ const CommentForm = ({ articleId, setComments }) => {
   const [commentBody, setCommentBody] = useState("");
   const [isSending, setIsSending] = useState(false);
 
+  const { user } = useContext(UserContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!commentBody.trim()) {
+      setCommentBody("");
+      return toast.warning("Invalid empty comment");
+    }
     setIsSending(true);
 
-    // username is being hardcoded for now
-    postComment(articleId, "weegembump", commentBody)
+    postComment(articleId, user, commentBody)
       .then(({ comment }) => {
         setIsSending(false);
+        setCommentBody("");
         setComments((comments) => [comment, ...comments]);
       })
       .catch((err) => {
