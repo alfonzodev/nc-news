@@ -12,7 +12,7 @@ const ArticleCard = ({ article }) => {
             <h1 className="heading-m">{article.title}</h1>
         </div>
       <div className="img-container">
-        <img src={article.article_img_url} />
+        <img src={article.article_img_url} alt={article.topic} />
       </div>
       <span className="author-span">Author: {article.author}</span>
       <button

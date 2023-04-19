@@ -4,6 +4,7 @@ import { fetchArticleById } from "../api";
 
 import LoadingBanner from "../components/LoadingBanner";
 import CommentsList from "../components/CommentsList";
+import ArticleRating from "../components/ArticleRating";
 
 import {timestampToDate} from "../utils/utils.js"
 
@@ -16,8 +17,8 @@ const SingleArticle = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const articleData = await fetchArticleById(article_id);
-      setArticle(articleData.article);
+      const response = await fetchArticleById(article_id);
+      setArticle(response.article);
       setIsLoading(false);
     };
     fetchData();
@@ -26,7 +27,7 @@ const SingleArticle = () => {
   if (isLoading) return <LoadingBanner typeOfData={"article"} />;
 
   return (
-    <>
+    <div className="single-article">
       <section className="article-section">
         <header className="article-header">
           <h1 className="heading-m">{article.title}</h1>
@@ -37,18 +38,21 @@ const SingleArticle = () => {
           <img
             className="article-img"
             src={article.article_img_url}
-            alt={`image about ${article.topic}`}
+            alt={`${article.topic}`}
           />
         </div>
         <div className="article-body">
           <p>{article.body}</p>
         </div>
       </section>
+      <section className="article-votes-section">
+        <ArticleRating articleVotes={article.votes} articleId={article.article_id}/>
+      </section>
       <section className="comments-section">
         <h2>Comments</h2>
         <CommentsList articleId={article_id}/>
       </section>
-    </>
+    </div>
   );
 };
 

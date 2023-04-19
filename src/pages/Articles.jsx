@@ -11,8 +11,8 @@ const Articles = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const articlesData = await fetchArticles();
-      setArticles(articlesData.articles);
+      const response = await fetchArticles();
+      setArticles(response.articles);
       setIsLoading(false);
     };
     fetchData();
@@ -20,7 +20,7 @@ const Articles = () => {
 
   if (isLoading) return <LoadingBanner typeOfData={'articles'}/>
   return(
-    <div className="Articles">
+    <div className="articles">
         <h1 className="heading-l">Articles</h1>
         <ArticlesList articles={articles}/>
     </div>
