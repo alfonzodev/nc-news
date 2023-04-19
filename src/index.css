@@ -29,9 +29,8 @@ body {
 .navbar {
   width: 100%;
   height: 100px;
-  position: fixed;
-  top: 0;
   padding: 1rem 2.5rem;
+  margin-bottom: 2rem;
   background-color: var(--clr-dark);
   display: flex;
   justify-content: space-between;
@@ -76,7 +75,7 @@ body {
 .articles,
 .single-article {
   width: 90%;
-  margin: 120px auto 0;
+  margin: 0 auto;
 }
 
 /* Articles List */
