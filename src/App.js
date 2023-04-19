@@ -8,12 +8,14 @@ import Articles from "./pages/Articles.jsx";
 import SingleArticle from "./pages/SingleArticle.jsx";
 
 import Header from "./components/Header.jsx";
+import TopicsSidebar from "./components/TopicsSidebar.jsx";
 
 function App() {
   const [user, setUser] = useState("weegembump");
   return (
     <div className="App">
       <Header />
+      <TopicsSidebar/>
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route path="/" element={<Home />} />
