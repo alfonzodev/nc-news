@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../api";
+import { fetchArticleById, fetchArticleComments } from "../api";
 
 import LoadingBanner from "../components/LoadingBanner";
 import CommentsList from "../components/CommentsList";
 import ArticleRating from "../components/ArticleRating";
+import CommentForm from "../components/CommentForm";
 
 import {timestampToDate} from "../utils/utils.js"
 
 const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState(null);
+  const [comments, setComments] = useState([]);
 
   const { article_id } = useParams();
 
+  const fetchData = () => {
+    return Promise.all([fetchArticleById(article_id), fetchArticleComments(article_id)]);
+  };
   useEffect(() => {
     setIsLoading(true);
-    const fetchData = async () => {
-      const response = await fetchArticleById(article_id);
-      setArticle(response.article);
+    fetchData().then(([articleResponse, commentsResponse]) => {
+      setArticle(articleResponse.article);
+      setComments(commentsResponse.comments);
       setIsLoading(false);
-    };
-    fetchData();
+    })
   }, [article_id]);
 
   if (isLoading) return <LoadingBanner typeOfData={"article"} />;
@@ -50,7 +54,8 @@ const SingleArticle = () => {
       </section>
       <section className="comments-section">
         <h2>Comments</h2>
-        <CommentsList articleId={article_id}/>
+        <CommentForm articleId={article_id} setComments={setComments}/>
+        <CommentsList comments={comments}/>
       </section>
     </div>
   );

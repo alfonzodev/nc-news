@@ -144,6 +144,12 @@ body {
   max-width: 100%;
 }
 
+
+/* Comments Section */
+.comments-section h2 {
+  margin-bottom: 1.5rem;
+}
+
 /* Comments List */
 .comments-list {
   list-style-type: none;
@@ -174,6 +180,31 @@ body {
   border: 1px solid var(--clr-dark);
   padding: 1.5rem;
   border-radius: 15px;
+}
+
+/* Comment Form */
+.comment-form {
+  position: relative;
+  border: 1px solid var(--clr-dark);
+  border-radius: 15px;
+  padding: 1rem 1rem 2.5rem 1rem;
+  /* height: 8rem; */
+}
+
+.comment-form-body{
+  border: none;
+  outline: none;
+  overflow: auto;
+  width: 100%;
+  display: block;
+  resize: none;
+  height: 4rem;
+}
+
+.comment-form-btn{
+  position: absolute;
+  bottom: .2rem;
+  right: .5rem;
 }
 
 /* Article Rating */
