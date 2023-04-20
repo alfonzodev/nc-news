@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { postComment } from "../api";
 
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../context/User";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

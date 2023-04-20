@@ -7,8 +7,8 @@ const api = axios.create({
 });
 
 
-export const fetchArticles = () => {
-    return api.get('/articles').then(({data}) => {
+export const fetchArticles = (topic) => {
+    return api.get('/articles', {params: {topic}}).then(({data}) => {
         return data;
     })
 }
@@ -34,4 +34,10 @@ export const postComment = (article_id, username, body) => {
 return api.post(`/articles/${article_id}/comments`, {username, body}).then(({data}) => {
     return data;
 })
+}
+
+export const getTopics = () => {
+    return api.get('/topics').then(({data}) => {
+        return data;
+    })
 }
