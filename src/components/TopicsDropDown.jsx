@@ -3,7 +3,6 @@ import { TopicsContext } from "../context/Topics";
 
 import { Link } from "react-router-dom";
 
-import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import {RxChevronDown} from "react-icons/rx"
 
 const TopicsDropDown = () => {

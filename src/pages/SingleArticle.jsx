@@ -65,8 +65,10 @@ const SingleArticle = () => {
             </section>
             <section className="comments-section">
               <h2>Comments</h2>
-              <CommentForm articleId={article_id} setComments={setComments} />
-              <CommentsList comments={comments} />
+              <div className="comments-container">
+                <CommentForm articleId={article_id} setComments={setComments} />
+                <CommentsList comments={comments} />
+              </div>
             </section>
           </>
         )}
