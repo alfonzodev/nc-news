@@ -4,6 +4,7 @@ import { TopicsContext } from "../context/Topics";
 import { Link } from "react-router-dom";
 
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
+import {RxChevronDown} from "react-icons/rx"
 
 const TopicsDropDown = () => {
   const [clicked, setClicked] = useState(false);
@@ -15,9 +16,7 @@ const TopicsDropDown = () => {
 
   return (
     <div className="topics-dropdown">
-      <button className="btn-topics-dropdown" onClick={handleClick}>
-        <FaRegArrowAltCircleDown />
-      </button>
+      <RxChevronDown className="topics-arrow" onClick={handleClick}/>
       {clicked ? (
         <ul className="topics-dropdown-list">
           <Link key={"All"} to={"/articles"}>

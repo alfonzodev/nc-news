@@ -15,11 +15,12 @@ a {
 :root {
 
   --ff-headings: 'Abril Fatface', cursive;
-  --ff-body: 'Roboto', sans-serif;
+  --ff-body: monospace;
+  --ff-alt: 'Roboto', sans-serif;
 
   --clr-light: #f0f0f0;
   --clr-gray: #bfbfbf;
-  --clr-dark: #373737;
+  --clr-dark: #111111;
   --clr-pearl: #dddac8;
   --clr-jade: #44AF69;
   --clr-moonstone: #1b9db4;
@@ -30,6 +31,7 @@ a {
 body {
   font-family: var(--ff-body);
   background-color: var(--clr-white);
+  font-size: 16px;
 }
 
 /* Navbar  */
@@ -58,15 +60,14 @@ body {
   align-items: center;
   column-gap: 0.5rem;
 }
-.logo-container:hover #logo-text,
+
 .logo-container:hover #logo-icon {
   cursor: pointer;
-  color: var(--clr-dark);
 }
 
 #logo-icon,
 #logo-text {
-  color: var(--clr-light);
+  color: var(--clr-dark);
 }
 
 #logo-icon {
@@ -77,6 +78,10 @@ body {
 
 #logo-text {
   font-size: 2rem;
+}
+
+#logo-text:hover{
+  text-shadow: 1px 2px rgba(255, 255, 255, 0.622)
 }
 
 .nav-btn{
@@ -168,24 +173,25 @@ text-indent: .4rem;
   font-size: 1.5rem;
 }
 .topics-dropdown ul li:hover{
-  color: var(--clr-dark);
+  color: var(--clr-orange);
 }
 
 
-.btn-topics-dropdown {
+.topics-arrow {
   background-color: transparent;
   font-size: 2.5rem;
   border: none;
   color: white;
   cursor: pointer;
+  border: 2px solid white;
 }
 
-.btn-topics-dropdown:hover{
+.topics-arrow:hover{
   color: rgb(218, 218, 218);
 }
 
 /* Articles*/
-.articles h1 {
+.articles-container h1 {
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -213,6 +219,7 @@ text-indent: .4rem;
   height: 375px;
   margin: 0.5rem;
   padding: 1rem 1rem 1.25rem;
+  font-family: var(--ff-alt);
 }
 
 .btn.btn-read-article{
@@ -246,24 +253,6 @@ text-indent: .4rem;
 .article-card img {
   max-width: 100%;
 }
-
-/* Single Article Page */
-
-.article-section,
-.comments-section,
-.article-votes-section {
-  margin: 3rem auto;
-}
-.article-img-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-}
-
-.article-img {
-  max-width: 100%;
-}
-
 .article-card-info {
   width: 85%;
   display: flex;
@@ -276,6 +265,26 @@ text-indent: .4rem;
   padding: .1rem .5rem;
   font-size: .85rem;
 }
+
+
+/* Single Article Page */
+
+.article-section,
+.comments-section,
+.article-votes-section {
+  margin-bottom: 3rem;
+}
+.article-img-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.article-img {
+  max-width: 100%;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
 
 /* Comments Section */
 .comments-section h2 {
@@ -292,6 +301,9 @@ text-indent: .4rem;
   width: 100%;
   row-gap: 1rem;
   margin-top: 2rem;
+}
+.article-body {
+  font-size: 1rem;
 }
 
 /* Comment Card */
