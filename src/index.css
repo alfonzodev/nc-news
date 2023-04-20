@@ -18,17 +18,12 @@ a {
   --clr-dark: #373844;
   --clr-light: #fbfff1;
   --clr-blue: #3c84d6;
+  --clr-gray: #a5a5a5;
   --clr-contrast: #bc2424;
 }
 
 body {
   font-family: var(--ff-body);
-}
-
-aside {
-  width: 20%;
-  margin-left: 5%;
-  float: left;
 }
 
 
@@ -42,6 +37,11 @@ aside {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-container {
+  display: flex;
+  position: relative;
 }
 
 .logo-container {
@@ -81,11 +81,78 @@ aside {
 .home,
 .articles,
 .single-article {
-  width: 90%;
+  display: flex;
+  column-gap: 2rem;
+  width: 95%;
   margin: 0 auto;
+  height: 100vh;
 }
 
-/* Articles List */
+.home-container,
+.article-container,
+.articles-container {
+  width: 85%;
+}
+
+/* Home */
+.home {
+  height: 100vh;
+}
+
+/* Topics Components */
+/* TopicsSidebar */
+.topics-sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 15%;
+}
+.topics-sidebar h1{
+  text-align: center;
+}
+
+.topics-sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* TopicsDropdown */
+
+.topics-dropdown {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 110%;
+}
+.topics-dropdown ul{
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  padding: .5rem;
+  list-style: none;
+  background-color: var(--clr-gray);
+}
+.topics-dropdown ul li{
+  color: var(--clr-light);
+  font-size: 1.5rem;
+}
+.topics-dropdown ul li:hover{
+  color: var(--clr-dark);
+}
+
+.btn-topics-dropdown {
+  background-color: transparent;
+  font-size: 2.5rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Articles*/
 .articles h1 {
   text-align: center;
   margin-bottom: 1rem;
@@ -256,6 +323,9 @@ aside {
   font-family: var(--ff-headings);
 }
 
+.heading-s {
+  font-size: 1.15rem;
+}
 .heading-m {
   font-size: 1.25rem;
 }
@@ -273,4 +343,15 @@ aside {
 .btn:hover {
   background-color: rgba(60, 132, 214, 0.7);
   scale: 0.98;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1200px) {
+  .topics-sidebar{
+    display: none;
+  }
+  .topics-dropdown {
+    display: block;
+  }
 }
