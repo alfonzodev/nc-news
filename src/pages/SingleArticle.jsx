@@ -40,7 +40,7 @@ const SingleArticle = () => {
           <>
             <section className="article-section">
               <header className="article-header">
-                <h1 className="heading-m">{article.title}</h1>
+                <h1 className="heading-l">{article.title}</h1>
                 <p className="article-date">
                   Posted on: {timestampToDate(article.created_at)}
                 </p>
