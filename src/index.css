@@ -385,6 +385,21 @@ text-indent: .4rem;
   text-align: center;
 }
 
+
+/* Login */
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+}
+.login-form input{
+  padding: .5rem 1rem;
+}
+.login-form input{
+  padding: .5rem 1rem;
+}
+
+
 /* Utility classes */
 
 .heading-m,
