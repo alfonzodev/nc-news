@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
-import { postComment } from "../api";
+import { toast } from "react-toastify";
 
 import { UserContext } from "../context/User";
+import { postComment } from "../api";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const CommentForm = ({ articleId, setComments }) => {
   const [commentBody, setCommentBody] = useState("");
@@ -51,7 +50,6 @@ const CommentForm = ({ articleId, setComments }) => {
           disabled={isSending}
         />
       </form>
-      <ToastContainer />
     </>
   );
 };
