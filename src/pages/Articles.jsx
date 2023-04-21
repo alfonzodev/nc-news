@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams} from "react-router-dom";
 import { fetchArticles } from "../api";
+
+import { capitalizeString } from "../utils/utils";
 
 import ArticlesList from "../components/ArticlesList";
 import LoadingBanner from "../components/LoadingBanner";
@@ -33,7 +35,7 @@ const Articles = () => {
           <LoadingBanner typeOfData={"articles"} />
         ) : (
           <>
-            <h1 className="heading-l">Articles</h1>
+            <h1 className="heading-l">{capitalizeString(topic)} Articles</h1>
             <ArticlesList articles={articles} />
           </>
         )}
