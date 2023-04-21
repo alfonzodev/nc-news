@@ -25,7 +25,7 @@ export const fetchArticleComments = (article_id) => {
 }
 
 export const incrementArticleVotes = (article_id, inc_votes) => {
-  return api.patch(`/articles/${article_id}`, {inc_votes}).then(({data}) => {
+  return api.patch(`/articles/${article_id}`, {inc_votes}, { withCredentials: true }).then(({data}) => {
       return data;
   })
 }
@@ -34,6 +34,14 @@ export const postComment = (article_id, username, body) => {
 return api.post(`/articles/${article_id}/comments`, {username, body}).then(({data}) => {
     return data;
 })
+}
+
+export const loginUser = (email, password) => {
+    return api.post('/users/login', {email, password}, {withCredentials: true }).then(({data}) => {
+        return data;
+    }).catch((err) => {
+        return Promise.reject(err);
+    })
 }
 
 export const getTopics = () => {

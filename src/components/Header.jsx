@@ -18,10 +18,10 @@ const Header = () => {
       </div>
 
       <div className="nav-btn-container">
-        <Link>
+        <Link to={'/login'}>
           <button className="btn nav-btn">Login</button>
         </Link>
-        <Link>
+        <Link to={'/register'}>
           <button className="btn nav-btn">Register</button>
         </Link>
       </div>
