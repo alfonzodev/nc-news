@@ -25,7 +25,7 @@ export const fetchArticleComments = (article_id) => {
 }
 
 export const incrementArticleVotes = (article_id, inc_votes) => {
-  return api.patch(`/articles/${article_id}`, {inc_votes}, { withCredentials: true }).then(({data}) => {
+  return api.patch(`/articles/${article_id}`, {inc_votes}).then(({data}) => {
       return data;
   })
 }
