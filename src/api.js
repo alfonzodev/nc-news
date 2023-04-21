@@ -7,8 +7,8 @@ const api = axios.create({
 });
 
 
-export const fetchArticles = (topic) => {
-    return api.get('/articles', {params: {topic}}).then(({data}) => {
+export const fetchArticles = (topic, sort_by, order) => {
+    return api.get('/articles', {params: {topic, sort_by, order}}).then(({data}) => {
         return data;
     })
 }
@@ -25,7 +25,7 @@ export const fetchArticleComments = (article_id) => {
 }
 
 export const incrementArticleVotes = (article_id, inc_votes) => {
-  return api.patch(`/articles/${article_id}`, {inc_votes}, { withCredentials: true }).then(({data}) => {
+  return api.patch(`/articles/${article_id}`, {inc_votes}).then(({data}) => {
       return data;
   })
 }

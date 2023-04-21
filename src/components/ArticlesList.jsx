@@ -1,6 +1,35 @@
-import ArticleCard from "./ArticleCard";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
-const ArticlesList = ({ articles }) => {
+import ArticleCard from "./ArticleCard";
+import LoadingBanner from "./LoadingBanner";
+
+import { fetchArticles } from "../api";
+
+const ArticlesList = () => {
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const topic = searchParams.get("topic");
+  const sort_by = searchParams.get("sort_by");
+  const order = searchParams.get("order");
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchArticles(topic, sort_by, order)
+      .then((data) => {
+        setArticles(data.articles);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [topic, sort_by, order, searchParams]);
+
+  if(isLoading) return <LoadingBanner typeOfData={"articles"} />
+  
   return (
     <ul className="articles-list">
       {articles.map((article) => {
