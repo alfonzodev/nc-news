@@ -306,6 +306,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .comment-header {
@@ -317,8 +318,33 @@ body {
 }
 .comment-body {
   border: 1px solid var(--clr-dark);
-  padding: 1.5rem;
+  padding: 1.5rem 2rem 1.5rem 1.5rem;
   border-radius: 15px;
+}
+.comment-container {
+  position: relative;
+}
+.spinner-comment-del,
+.btn-comment-del {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.spinner-comment-del{
+  color: var(--clr-moonstone);
+}
+
+.btn-comment-del {
+  border: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.29);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.btn-comment-del:hover {
+  color: var(--clr-red);
 }
 
 /* Comment Form */

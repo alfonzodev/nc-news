@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { incrementArticleVotes } from "../api";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ArticleRating = ({ articleId, articleVotes }) => {
@@ -66,7 +66,6 @@ const ArticleRating = ({ articleId, articleVotes }) => {
           +
         </button>
       </div>
-      <ToastContainer />
     </>
   );
 };
