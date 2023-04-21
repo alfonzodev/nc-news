@@ -7,8 +7,8 @@ const api = axios.create({
 });
 
 
-export const fetchArticles = (topic) => {
-    return api.get('/articles', {params: {topic}}).then(({data}) => {
+export const fetchArticles = (topic, sort_by, order) => {
+    return api.get('/articles', {params: {topic, sort_by, order}}).then(({data}) => {
         return data;
     })
 }
