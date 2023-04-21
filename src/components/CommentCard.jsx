@@ -1,32 +1,35 @@
 import { useContext, useState } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 import { UserContext } from "../context/User";
 import { timestampToDate } from "../utils/utils";
 import { deleteCommentById } from "../api";
 
 const CommentCard = ({ comment, setComments }) => {
-  const [clicked, setClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(UserContext);
 
   const handleClick = (e) => {
-    setClicked(true);
     if (user !== comment.author) {
       toast.error("You are not the author of this comment.");
     } else {
-      deleteCommentById(comment.comment_id).then(() => {
-        toast.success('Comment deleted!')
-        setComments((comments) => {
-          return comments.filter(
-            (com) => com.comment_id !== comment.comment_id
-          );
+      setIsLoading(true)
+      deleteCommentById(comment.comment_id)
+        .then(() => {
+          setComments((comments) => {
+            return comments.filter(
+              (com) => com.comment_id !== comment.comment_id
+            );
+          });
+          setIsLoading(false);
+          toast.success("Comment deleted!");
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      }).catch(err => {
-        console.log(err)
-      })
     }
-    setClicked(false);
   };
 
   return (
@@ -42,13 +45,16 @@ const CommentCard = ({ comment, setComments }) => {
         <div className="comment-body">
           <p>{comment.body}</p>
         </div>
-        <button
-          className="btn-comment-del"
-          disabled={clicked}
-          onClick={handleClick}
-        >
-          <MdOutlineDeleteOutline />
-        </button>
+        {!isLoading ? (
+          <button
+            className="btn-comment-del"
+            onClick={handleClick}
+          >
+            <MdOutlineDeleteOutline />
+          </button>
+        ) : (
+          <ClipLoader className="spinner-comment-del" color="#1b9db4" />
+        )}
       </div>
     </li>
   );

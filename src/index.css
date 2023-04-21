@@ -321,22 +321,29 @@ body {
   padding: 1.5rem 2rem 1.5rem 1.5rem;
   border-radius: 15px;
 }
-.comment-container{
+.comment-container {
   position: relative;
 }
+.spinner-comment-del,
+.btn-comment-del {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
 
-.btn-comment-del{
+.spinner-comment-del{
+  color: var(--clr-moonstone);
+}
+
+.btn-comment-del {
   border: none;
   background-color: transparent;
   color: rgba(0, 0, 0, 0.29);
   font-size: 2rem;
-  position: absolute;
-  bottom: .5rem;
-  right: .5rem;
   cursor: pointer;
 }
 
-.btn-comment-del:hover{
+.btn-comment-del:hover {
   color: var(--clr-red);
 }
 
