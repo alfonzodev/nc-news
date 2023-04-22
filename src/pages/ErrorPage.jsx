@@ -20,8 +20,8 @@ const ErrorPage = ({ error }) => {
   }, [error]);
 
   return (
-    <div className="not-found-page">
-      <div className="not-found-msg-container">
+    <div className="error-page">
+      <div className="error-msg-container">
         <h1 className="heading-l">{status}</h1>
         <p>{message}</p>
         <Link to={"/"} className="back-home-link">
