@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import { incrementArticleVotes } from "../api";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { incrementArticleVotes } from "../api";
+
+import errorMessages from "../utils/errorMessages";
 
 const ArticleRating = ({ articleId, articleVotes }) => {
   const [votes, setVotes] = useState(articleVotes);
@@ -16,9 +19,11 @@ const ArticleRating = ({ articleId, articleVotes }) => {
       incrementArticleVotes(articleId, incVotes)
         .then()
         .catch((err) => {
-          toast.error("Article voting failed.");
+          toast.error(errorMessages[err.response.status]);
           // reset votes in UI
           setVotes(articleVotes);
+          setHasVotedUp(false);
+          setHasVotedDown(false);
         });
     }
   }, [incVotes, articleVotes, articleId]);

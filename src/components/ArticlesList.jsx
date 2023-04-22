@@ -4,13 +4,14 @@ import { useSearchParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import LoadingBanner from "./LoadingBanner";
 
+
 import { fetchArticles } from "../api";
 
-const ArticlesList = () => {
+const ArticlesList = ({setError}) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const topic = searchParams.get("topic");
   const sort_by = searchParams.get("sort_by");
@@ -24,9 +25,9 @@ const ArticlesList = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
-  }, [topic, sort_by, order, searchParams]);
+  }, [topic, sort_by, order, searchParams, setError]);
 
   if(isLoading) return <LoadingBanner typeOfData={"articles"} />
   

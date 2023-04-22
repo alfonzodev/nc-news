@@ -6,13 +6,15 @@ import LoadingBanner from "../components/LoadingBanner";
 import CommentsList from "../components/CommentsList";
 import ArticleRating from "../components/ArticleRating";
 import CommentForm from "../components/CommentForm";
-
 import TopicsSidebar from "../components/TopicsSidebar";
+
+import ErrorPage from "./ErrorPage";
 
 import { timestampToDate } from "../utils/utils.js";
 
 const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
 
@@ -23,12 +25,20 @@ const SingleArticle = () => {
     Promise.all([
       fetchArticleById(article_id),
       fetchArticleComments(article_id),
-    ]).then(([articleResponse, commentsResponse]) => {
-      setArticle(articleResponse.article);
-      setComments(commentsResponse.comments);
-      setIsLoading(false);
-    });
+    ])
+      .then(([articleResponse, commentsResponse]) => {
+        setArticle(articleResponse.article);
+        setComments(commentsResponse.comments);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [article_id]);
+
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <div className="single-article">
@@ -67,7 +77,7 @@ const SingleArticle = () => {
               <h2>Comments</h2>
               <div className="comments-container">
                 <CommentForm articleId={article_id} setComments={setComments} />
-                <CommentsList comments={comments} setComments={setComments}/>
+                <CommentsList comments={comments} setComments={setComments} />
               </div>
             </section>
           </>

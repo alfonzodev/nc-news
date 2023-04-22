@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 import { UserContext } from "../context/User";
 import { postComment } from "../api";
+import errorMessages from "../utils/errorMessages";
 
 
 const CommentForm = ({ articleId, setComments }) => {
@@ -15,7 +16,7 @@ const CommentForm = ({ articleId, setComments }) => {
     e.preventDefault();
     if (!commentBody.trim()) {
       setCommentBody("");
-      return toast.warning("Invalid empty comment");
+      return toast.warning("Invalid: empty comment");
     }
     setIsSending(true);
 
@@ -27,7 +28,7 @@ const CommentForm = ({ articleId, setComments }) => {
       })
       .catch((err) => {
         setIsSending(false);
-        toast.error("Comment posting failed");
+        toast.error(errorMessages[err.response.status]);
       });
   };
   const handleChange = (e) => {

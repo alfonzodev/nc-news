@@ -1,12 +1,16 @@
 import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
 import { capitalizeString } from "../utils/utils";
 
 import ArticlesList from "../components/ArticlesList";
 import TopicsSidebar from "../components/TopicsSidebar";
 
+import ErrorPage from "./ErrorPage";
+
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null)
 
   const topic = searchParams.get("topic");
 
@@ -19,6 +23,8 @@ const Articles = () => {
       return searchParams;
     });
   };
+
+  if(error) return <ErrorPage error={error}/>
 
   return (
     <div className="articles">
@@ -36,7 +42,7 @@ const Articles = () => {
           <option value="votes-asc">Least Voted</option>
         </select>
 
-        <ArticlesList params={searchParams} />
+        <ArticlesList params={searchParams} setError={setError}/>
       </section>
     </div>
   );
