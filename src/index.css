@@ -406,6 +406,28 @@ body {
   text-align: center;
 }
 
+/* Error Page */
+
+.error-page {
+  width: 95%;
+  height: 70vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-msg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-home-link{
+  margin-top: 2rem;
+}
+
+
 /* Login */
 .login {
   width: min(600px, 80%);
