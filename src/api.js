@@ -4,6 +4,7 @@ const BASE_URL = "https://top-tier-articles.onrender.com/api/";
 
 const api = axios.create({
   baseURL: BASE_URL,
+  withCredentials: true
 });
 
 export const fetchArticles = (topic, sort_by, order) => {
@@ -43,7 +44,7 @@ export const postComment = (article_id, username, body) => {
 
 export const loginUser = (email, password) => {
   return api
-    .post("/users/login", { email, password }, { withCredentials: true })
+    .post("/users/login", { email, password })
     .then(({ data }) => {
       return data;
     })
