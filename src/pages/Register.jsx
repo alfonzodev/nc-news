@@ -1,19 +1,32 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
+import { UserContext } from "../context/User";
 import { registerUser } from "../api";
 import Spinner from "../components/Spinner";
 import { validateUsername } from "../utils/utils";
 
 const Register = () => {
+  const {user, setUser} = useContext(UserContext);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+
   const [isLoading, setIsLoading] = useState(false);
   const [usernameInvalid, setUsernameInvalid] = useState(false);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
   const [username, setUsername] = useState("");
+
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
   const [passwordCf, setPasswordCf] = useState("");
+
+  // If user is logged in redirect to home page
+  if(user) return <Navigate to="/" replace={true}/>
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +41,9 @@ const Register = () => {
     setIsLoading(true);
     const name = firstName + " " + lastName;
     return registerUser({ name, username, email, password })
-      .then((data) => {
+      .then(({user}) => {
+        setUser(user);
+        setCookie('user', user, {maxAge: 24 * 60 * 60, path: '/' })
         setIsLoading(false);
       })
       .catch((err) => {

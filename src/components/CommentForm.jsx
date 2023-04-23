@@ -20,7 +20,7 @@ const CommentForm = ({ articleId, setComments }) => {
     }
     setIsSending(true);
 
-    postComment(articleId, user, commentBody)
+    postComment(articleId, user.username, commentBody)
       .then(({ comment }) => {
         setIsSending(false);
         setCommentBody("");
