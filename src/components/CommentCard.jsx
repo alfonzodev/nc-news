@@ -27,6 +27,7 @@ const CommentCard = ({ comment, setComments }) => {
           toast.success("Comment deleted!");
         })
         .catch((err) => {
+          setIsLoading(false);
           console.log(err);
         });
     }
