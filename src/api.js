@@ -36,6 +36,10 @@ export const loginUser = (email, password) => {
   return api.post("/users/login", { email, password }).then(({ data }) => data);
 };
 
+export const registerUser = ({name, username, email, password}) => {
+  return api.post("/users/register", { name, username, email, password }).then(({ data }) => data);
+};
+
 export const getTopics = () => {
   return api.get("/topics").then(({ data }) => data);
 };
