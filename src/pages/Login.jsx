@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 import Spinner from "../components/Spinner";
 
@@ -11,6 +12,8 @@ import { loginUser } from "../api";
 
 const Login = () => {
   const {user, setUser} = useContext(UserContext);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +26,7 @@ const Login = () => {
     e.preventDefault();
     loginUser(email, password)
       .then(({user}) => {
+        setCookie('user', user, {maxAge: 24 * 60 * 60 })
         setUser(user);
         setIsLoading(false);
       })

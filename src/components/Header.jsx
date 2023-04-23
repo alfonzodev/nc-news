@@ -1,14 +1,21 @@
-import { FaRegNewspaper } from "react-icons/fa";
 import { Link, Navigate } from "react-router-dom";
-import TopicsDropDown from "./TopicsDropDown";
 import { useContext } from "react";
+import { useCookies } from "react-cookie";
+
+import { FaRegNewspaper } from "react-icons/fa";
+
+import TopicsDropDown from "./TopicsDropDown";
+
 import { UserContext } from "../context/User";
+
 import { logoutUser } from "../api";
 
 const Header = () => {
   const {user, setUser} = useContext(UserContext);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   const handleLogout = () => {
+    removeCookie('user', { path: '/' });
     setUser(null);
     return logoutUser()
       .then(() => {

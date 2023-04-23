@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 import { UserContext } from "../context/User";
 import { registerUser } from "../api";
@@ -9,6 +10,7 @@ import { validateUsername } from "../utils/utils";
 
 const Register = () => {
   const {user, setUser} = useContext(UserContext);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   const [isLoading, setIsLoading] = useState(false);
   const [usernameInvalid, setUsernameInvalid] = useState(false);
@@ -41,6 +43,7 @@ const Register = () => {
     return registerUser({ name, username, email, password })
       .then(({user}) => {
         setUser(user);
+        setCookie('user', user, {maxAge: 24 * 60 * 60 })
         setIsLoading(false);
       })
       .catch((err) => {

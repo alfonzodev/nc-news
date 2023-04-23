@@ -11,6 +11,8 @@ import SingleArticle from "./pages/SingleArticle.jsx";
 import Login from "./pages/Login.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 
+// import { useCookies } from "react-cookie";
+
 import Header from "./components/Header.jsx";
 import Register from "./pages/Register.jsx";
 
