@@ -4,13 +4,19 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
+import { UserProvider } from "./context/User.jsx";
+import { TopicsProvider } from "./context/Topics.jsx";
 import { CookiesProvider } from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <CookiesProvider>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <TopicsProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
+    </TopicsProvider>
   </CookiesProvider>
 );
