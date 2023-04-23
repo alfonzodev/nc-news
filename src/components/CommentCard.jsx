@@ -12,10 +12,10 @@ const CommentCard = ({ comment, setComments }) => {
   const { user } = useContext(UserContext);
 
   const handleClick = (e) => {
-    if (user !== comment.author) {
+    if (user.username !== comment.author) {
       toast.error("You are not the author of this comment.");
     } else {
-      setIsLoading(true)
+      setIsLoading(true);
       deleteCommentById(comment.comment_id)
         .then(() => {
           setComments((comments) => {
@@ -46,15 +46,14 @@ const CommentCard = ({ comment, setComments }) => {
         <div className="comment-body">
           <p>{comment.body}</p>
         </div>
-        {!isLoading ? (
-          <button
-            className="btn-comment-del"
-            onClick={handleClick}
-          >
+        {comment.author === user?.username && !isLoading ? (
+          <button className="btn-comment-del" onClick={handleClick}>
             <MdOutlineDeleteOutline />
           </button>
-        ) : (
+        ) : comment.author === user?.username && isLoading ? (
           <ClipLoader className="spinner-comment-del" color="#1b9db4" />
+        ) : (
+          <></>
         )}
       </div>
     </li>
