@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+
+import { UserContext } from "../context/User";
 
 import { incrementArticleVotes } from "../api";
 
 import errorMessages from "../utils/errorMessages";
 
 const ArticleRating = ({ articleId, articleVotes }) => {
+  const { user } = useContext(UserContext);
+
   const [votes, setVotes] = useState(articleVotes);
   const [incVotes, setIncVotes] = useState(0);
   const [hasVotedUp, setHasVotedUp] = useState(false);
@@ -16,17 +19,23 @@ const ArticleRating = ({ articleId, articleVotes }) => {
   useEffect(() => {
     // Prevent incrementArticleVotes() from executing on first render
     if (incVotes !== 0) {
+      // If user not logged in
+      if (!user) {
+        // reset votes in UI
+        setVotes(articleVotes);
+        toast.error(errorMessages[401]);
+        return;
+      }
+
       incrementArticleVotes(articleId, incVotes)
         .then()
         .catch((err) => {
           toast.error(errorMessages[err.response.status]);
           // reset votes in UI
           setVotes(articleVotes);
-          setHasVotedUp(false);
-          setHasVotedDown(false);
         });
     }
-  }, [incVotes, articleVotes, articleId]);
+  }, [incVotes, articleVotes, articleId, user]);
 
   const incrementVote = () => {
     setVotes((votes) => votes + 1);
@@ -34,7 +43,7 @@ const ArticleRating = ({ articleId, articleVotes }) => {
     setHasVotedUp(true);
     setHasVotedDown(false);
   };
-  
+
   const decrementVote = () => {
     setVotes((votes) => votes - 1);
     setIncVotes(-1);
