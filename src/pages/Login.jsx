@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     loginUser(email, password)
       .then(({user}) => {
-        setCookie('user', user, {maxAge: 24 * 60 * 60 })
+        setCookie('user', user, {maxAge: 24 * 60 * 60, path: '/'})
         setUser(user);
         setIsLoading(false);
       })

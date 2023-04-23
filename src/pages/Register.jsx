@@ -43,7 +43,7 @@ const Register = () => {
     return registerUser({ name, username, email, password })
       .then(({user}) => {
         setUser(user);
-        setCookie('user', user, {maxAge: 24 * 60 * 60 })
+        setCookie('user', user, {maxAge: 24 * 60 * 60, path: '/' })
         setIsLoading(false);
       })
       .catch((err) => {
