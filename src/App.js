@@ -18,8 +18,8 @@ const App = () => {
   return (
     <div className="App">
       <TopicsProvider>
-        <Header />
         <UserProvider>
+        <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Articles />} />

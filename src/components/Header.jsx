@@ -1,8 +1,22 @@
 import { FaRegNewspaper } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import TopicsDropDown from "./TopicsDropDown";
+import { useContext } from "react";
+import { UserContext } from "../context/User";
+import { logoutUser } from "../api";
 
 const Header = () => {
+  const {user, setUser} = useContext(UserContext);
+
+  const handleLogout = () => {
+    setUser(null);
+    return logoutUser()
+      .then(() => {
+        return <Navigate to="/" replace={true} />
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <header className="navbar">
       <div className="nav-container">
@@ -18,12 +32,20 @@ const Header = () => {
       </div>
 
       <div className="nav-btn-container">
-        <Link to={'/login'}>
-          <button className="btn nav-btn">Login</button>
-        </Link>
-        <Link to={'/register'}>
-          <button className="btn nav-btn">Register</button>
-        </Link>
+        {user ? (
+          <button onClick={handleLogout} className="btn nav-btn">
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link to={"/login"}>
+              <button className="btn nav-btn">Login</button>
+            </Link>
+            <Link to={"/register"}>
+              <button className="btn nav-btn">Register</button>
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );
