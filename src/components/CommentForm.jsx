@@ -7,10 +7,10 @@ import errorMessages from "../utils/errorMessages";
 
 
 const CommentForm = ({ articleId, setComments }) => {
+  const { user } = useContext(UserContext);
+
   const [commentBody, setCommentBody] = useState("");
   const [isSending, setIsSending] = useState(false);
-
-  const { user } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,9 +18,11 @@ const CommentForm = ({ articleId, setComments }) => {
       setCommentBody("");
       return toast.warning("Invalid: empty comment");
     }
+    if(!user) return toast.error(errorMessages[401]);
+
     setIsSending(true);
 
-    postComment(articleId, user.username, commentBody)
+    postComment(articleId, user?.username, commentBody)
       .then(({ comment }) => {
         setIsSending(false);
         setCommentBody("");
