@@ -429,24 +429,34 @@ body {
 
 
 /* Login */
-.login {
+.login, .registration{
   width: min(600px, 80%);
   margin: 0 auto;
 }
 
-.login-form {
+.login-form, .registration-form {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
-.login-form > input {
+.login-form > input, .registration-form > input {
   margin-bottom: 1rem;
 }
-.login-form input {
+.login-form input, .registration-form input {
   padding: 0.5rem 1rem;
 }
-.login-form input:focus {
+.login-form input:focus, .registration-form input:focus {
   outline: none;
+}
+
+/* Spinner */
+
+.spinner{
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Utility classes */
