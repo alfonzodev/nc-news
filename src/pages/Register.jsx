@@ -3,9 +3,11 @@ import { toast } from "react-toastify";
 
 import { registerUser } from "../api";
 import Spinner from "../components/Spinner";
+import { validateUsername } from "../utils/utils";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [usernameInvalid, setUsernameInvalid] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -19,6 +21,9 @@ const Register = () => {
       return toast.error("Passwords do not match", {
         position: "bottom-right",
       });
+    }
+    if (!validateUsername(username)) {
+      return setUsernameInvalid(true);
     }
     setIsLoading(true);
     const name = firstName + " " + lastName;
@@ -66,6 +71,12 @@ const Register = () => {
           placeholder="Choose a username..."
           required={true}
         />
+        {usernameInvalid && (
+          <p className="invalid-username-error">
+            Username must contain 8-25 characters, no capital letters and must
+            not start with a number
+          </p>
+        )}
         <label htmlFor="email">Email</label>
         <input
           name="email"

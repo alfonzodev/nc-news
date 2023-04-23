@@ -7,4 +7,9 @@ const capitalizeString = (word) => {
   if(word !== null && typeof word.charAt(0) !== "number") return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-module.exports = { timestampToDate, capitalizeString };
+const validateUsername = (username) => {
+  const usernameRegex = /^[a-z][a-z0-9_]{7,24}$/;
+  return usernameRegex.test(username);
+}
+
+module.exports = { timestampToDate, capitalizeString, validateUsername};

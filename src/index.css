@@ -428,7 +428,7 @@ body {
 }
 
 
-/* Login */
+/* Login & Registration*/
 .login, .registration{
   width: min(600px, 80%);
   margin: 0 auto;
@@ -447,6 +447,12 @@ body {
 }
 .login-form input:focus, .registration-form input:focus {
   outline: none;
+}
+
+.invalid-username-error {
+  font-size: 12px;
+  color: var(--clr-red);
+  margin: -1rem 0 1rem;
 }
 
 /* Spinner */

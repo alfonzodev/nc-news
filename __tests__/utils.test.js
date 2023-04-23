@@ -1,4 +1,4 @@
-const { timestampToDate, capitalizeString } = require("../src/utils/utils.js");
+const { timestampToDate, capitalizeString, validateUsername } = require("../src/utils/utils.js");
 
 describe("timestampToDate", () => {
   test("it does not mutate timestamp", () => {
@@ -30,3 +30,26 @@ describe("capitalizeString", () => {
     expect(result).toBe("5hello");
   });
 });
+
+describe("validateUsername", () => {
+  test("it returns true if username has at least 8 characters, does not start with a number and has no capital letters", () => {
+    const username = 'testusername123';
+    expect(validateUsername(username)).toBe(true);
+  })
+  test("it returns false if username has more than 25 chars", () => {
+    const username = 'testusernamefasdfasfasdfsadfa';
+    expect(validateUsername(username)).toBe(false);
+  })
+  test("it returns false if username has less than 8 chars", () => {
+    const username = 'testuse';
+    expect(validateUsername(username)).toBe(false);
+  })
+  test("it returns false if username has capital letter", () => {
+    const username = 'testUsername';
+    expect(validateUsername(username)).toBe(false);
+  })
+  test("it returns false if username starts with a number", () => {
+    const username = '1testusername';
+    expect(validateUsername(username)).toBe(false);
+  })
+})
