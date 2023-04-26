@@ -17,7 +17,7 @@ The following features still need implementing:
 
 (Please refer to the wireframe in this repo for an overview of these features)
 
-Also, there are some improvements to be made in regards to design and responsiveness. For example, the navbar is currently not completely reponsive in mobile as there is some overlap of elements.
+Also, there are some improvements to be made in regards to design and responsiveness.
 
 ## Installation and Setup Instructions
 
