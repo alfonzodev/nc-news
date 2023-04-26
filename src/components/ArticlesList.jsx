@@ -19,7 +19,7 @@ const ArticlesList = ({setError}) => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(topic, sort_by, order)
+    fetchArticles({topic, sort_by, order})
       .then((data) => {
         setArticles(data.articles);
         setIsLoading(false);

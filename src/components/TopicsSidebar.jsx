@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const TopicsSidebar = ({topics}) => {
-  console.log(topics)
   return (
     <section className="topics-sidebar">
       <div className="sidebar-title-container">
