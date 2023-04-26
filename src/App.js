@@ -8,14 +8,13 @@ import SingleArticle from "./pages/SingleArticle.jsx";
 import Login from "./pages/Login.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 
-import Header from "./components/Header.jsx";
 import Register from "./pages/Register.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 const App = () => {
   return (
     <div className="App">
-      
-        <Header />
+        <Navbar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Articles />} />
