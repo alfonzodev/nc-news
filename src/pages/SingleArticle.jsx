@@ -12,7 +12,7 @@ import ErrorPage from "./ErrorPage";
 
 import { timestampToDate } from "../utils/utils.js";
 
-const SingleArticle = () => {
+const SingleArticle = ({topics}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [article, setArticle] = useState(null);
@@ -42,7 +42,7 @@ const SingleArticle = () => {
 
   return (
     <div className="single-article">
-      <TopicsSidebar />
+      <TopicsSidebar topics={topics}/>
       <section className="article-container">
         {isLoading ? (
           <LoadingBanner typeOfData={"articles"} />

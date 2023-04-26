@@ -8,7 +8,7 @@ import TopicsSidebar from "../components/TopicsSidebar";
 
 import ErrorPage from "./ErrorPage";
 
-const Articles = () => {
+const Articles = ({topics}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null)
 
@@ -28,7 +28,7 @@ const Articles = () => {
 
   return (
     <div className="articles">
-      <TopicsSidebar />
+      <TopicsSidebar topics={topics}/>
 
       <section className="articles-container">
         <h1 className="heading-l">{capitalizeString(topic)} Articles</h1>
