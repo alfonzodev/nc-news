@@ -1,0 +1,14 @@
+:root {
+    --ff-headings: "Abril Fatface", cursive;
+    --ff-body: monospace;
+    --ff-alt: "Roboto", sans-serif;
+  
+    --clr-light: #f0f0f0;
+    --clr-gray: #bfbfbf;
+    --clr-dark: #111111;
+    --clr-pearl: #dddac8;
+    --clr-jade: #44af69;
+    --clr-moonstone: #1b9db4;
+    --clr-orange: #fcab10;
+    --clr-red: #f8333c;
+  }

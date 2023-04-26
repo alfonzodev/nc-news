@@ -1,6 +1,9 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:ital,wght@0,300;0,400;1,100&display=swap");
 
+/* CSS Variables */
+@import './variables.css';
+
 /* CSS Reset */
 * {
   margin: 0;
@@ -11,81 +14,11 @@ a {
   text-decoration: none;
 }
 
-:root {
-  --ff-headings: "Abril Fatface", cursive;
-  --ff-body: monospace;
-  --ff-alt: "Roboto", sans-serif;
-
-  --clr-light: #f0f0f0;
-  --clr-gray: #bfbfbf;
-  --clr-dark: #111111;
-  --clr-pearl: #dddac8;
-  --clr-jade: #44af69;
-  --clr-moonstone: #1b9db4;
-  --clr-orange: #fcab10;
-  --clr-red: #f8333c;
-}
 
 body {
   font-family: var(--ff-body);
   background-color: var(--clr-white);
   font-size: 16px;
-}
-
-/* Navbar  */
-.navbar {
-  width: 100%;
-  height: 80px;
-  padding: 1rem 2.5rem;
-  margin-bottom: 2rem;
-  background-color: var(--clr-moonstone);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.nav-container {
-  font-family: var(--ff-headings);
-  display: flex;
-  position: relative;
-  z-index: 2;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 0.5rem;
-}
-
-.logo-container:hover #logo-icon {
-  cursor: pointer;
-}
-
-#logo-icon,
-#logo-text {
-  color: var(--clr-dark);
-}
-
-#logo-icon {
-  display: flex;
-  align-items: center;
-  font-size: 3rem;
-}
-
-#logo-text {
-  font-size: 2rem;
-}
-
-#logo-text:hover {
-  text-shadow: 1px 2px rgba(255, 255, 255, 0.622);
-}
-
-.nav-btn {
-  margin: 0 0.5rem;
-  padding: 0.5rem 2rem;
-  font-family: var(--ff-headings);
 }
 
 /* Common styling */
@@ -126,6 +59,7 @@ body {
   width: 100%;
   border-bottom: 1px solid black;
 }
+
 .topics-sidebar h1 {
   text-align: center;
 }
@@ -145,46 +79,6 @@ body {
   color: var(--clr-dark);
   scale: 1.1;
   background-color: rgba(0, 0, 0, 0.19);
-}
-
-/* TopicsDropdown */
-
-.topics-dropdown {
-  display: none;
-  position: absolute;
-  width: 100%;
-  left: 110%;
-}
-
-.topics-dropdown ul {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  row-gap: 0.5rem;
-  padding: 2rem 0.5rem 0.5rem;
-  list-style: none;
-  background-color: var(--clr-dark);
-}
-
-.topics-dropdown ul li {
-  color: var(--clr-light);
-  font-size: 1.5rem;
-}
-.topics-dropdown ul li:hover {
-  color: var(--clr-orange);
-}
-
-.topics-arrow {
-  background-color: transparent;
-  font-size: 2.5rem;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border: 2px solid white;
-}
-
-.topics-arrow:hover {
-  color: rgb(218, 218, 218);
 }
 
 /* Articles*/
@@ -501,9 +395,7 @@ body {
   .topics-sidebar {
     display: none;
   }
-  .topics-dropdown {
-    display: block;
-  }
+
 }
 @media only screen and (min-width: 1200px) {
   .article-body {
