@@ -9,7 +9,6 @@ An articles web app built with React.
 The app is still in development. As of now users can register, login, view articles, comment on articles and upvote/downvote articles. If a user leaves the page, the session is stored in a cookie.
 
 The following features still need implementing:
-- Featured articles section in home page (three most voted articles)
 - Dashboard page
 - Posting an article
 - Articles pagination
@@ -40,7 +39,7 @@ One of the main challenges I ran into was Authentication/Authorization.
 
 This was not part of the project requirements, and the backend api was not developed originally to support this feature. But this was something I really wanted to learn about. So on my free time I worked on refactoring the api, and this lead me to spend a few days researching authentication, authorization with JWT, cookies and Cross-Origin Resource Sharing.
 
-This turned out to be a highly interesting topic, and I chose to allocate more time than originally planned into the development of the login/register features, hence the unrefined state of the app's design.
+This turned out to be a highly interesting topic, and I chose to allocate more time than originally planned into the development of the login/register features, hence the intial unrefined state of the app's design.
 
 ## Notes on CORS
 
