@@ -7,15 +7,13 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { RxChevronDown } from "react-icons/rx";
 
 import { UserContext } from "../context/User";
-import { TopicsContext } from "../context/Topics";
 
 import { logoutUser } from "../api";
 
 import "../style/Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({topics}) => {
   const { user, setUser } = useContext(UserContext);
-  const { topics } = useContext(TopicsContext);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [profileClicked, setProfileClicked] = useState(false);
   const [topicsClicked, setTopicsClicked] = useState(false);
@@ -52,7 +50,7 @@ const Navbar = () => {
             <Link key={"All"} to={"/articles"} onClick={handleTopicsClick}>
               <li className="nav-link">All</li>
             </Link>
-            {topics.map((topic) => {
+            {topics?.map((topic) => {
               return (
                 <Link
                   key={topic.slug}

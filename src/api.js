@@ -7,9 +7,9 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export const fetchArticles = (topic, sort_by, order) => {
+export const fetchArticles = ({topic, sort_by, order, limit, p}) => {
   return api
-    .get("/articles", { params: { topic, sort_by, order } })
+    .get("/articles", { params: { topic, sort_by, order, limit, p } })
     .then(({ data }) => data);
 };
 export const fetchArticleById = (article_id) => {
