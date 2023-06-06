@@ -31,7 +31,6 @@ body {
   margin: 0 auto;
 }
 
-
 .home-container,
 .article-container,
 .articles-container {
@@ -64,7 +63,7 @@ body {
   background-color: var(--clr-red);
 }
 
-.featured-list{
+.featured-list {
   margin-top: 2rem;
 }
 
@@ -85,7 +84,7 @@ body {
 }
 
 .featured-card p {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .read-more-link {
@@ -130,15 +129,15 @@ body {
   .featured-card-text h2 {
     font-size: 1.25rem;
     text-align: left;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
-  .featured-card-text p{
-    font-size: .9rem;
+  .featured-card-text p {
+    font-size: 0.9rem;
   }
-  .featured-card{
+  .featured-card {
     flex-direction: row;
     justify-content: flex-start;
-    column-gap: .5rem;
+    column-gap: 0.5rem;
     padding: 2rem 1.5rem;
   }
   .featured-card-img-container {
@@ -151,10 +150,10 @@ body {
     font-size: 1.35rem;
     text-align: left;
   }
-  .featured-card-text p{
+  .featured-card-text p {
     font-size: 1rem;
   }
-  .featured-card{
+  .featured-card {
     flex-direction: row;
     justify-content: flex-start;
     column-gap: 1rem;
@@ -170,7 +169,7 @@ body {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  .featured-card-text p{
+  .featured-card-text p {
     font-size: 1.2rem;
   }
 
@@ -181,7 +180,6 @@ body {
     left: 50%;
     transform: translateX(-50%);
   }
-
 }
 
 /* Topics Components */
@@ -438,6 +436,53 @@ body {
 .article-vote-count {
   height: 2rem;
   text-align: center;
+}
+
+/* Dashboard Page */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 95%;
+  margin: 0 auto;
+}
+
+.dashboard .profile-img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dashboard .profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dashboard .profile-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.dashboard .options {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+@media only screen and (min-width: 728px) {
+  .dashboard {
+    flex-direction: row;
+    align-items: center;
+    column-gap: 4rem;
+    justify-content: center;
+  }
 }
 
 /* Error Page */
