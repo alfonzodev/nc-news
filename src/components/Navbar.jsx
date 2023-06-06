@@ -12,7 +12,7 @@ import { logoutUser } from "../api";
 
 import "../style/Navbar.css";
 
-const Navbar = ({topics}) => {
+const Navbar = ({ topics }) => {
   const { user, setUser } = useContext(UserContext);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [profileClicked, setProfileClicked] = useState(false);
@@ -72,9 +72,12 @@ const Navbar = ({topics}) => {
           className={profileClicked ? "profile-links active" : "profile-links"}
         >
           {user ? (
-            <Link to={"/"} onClick={handleLogout}>
-              Logout
-            </Link>
+            <>
+              <Link to={"/profile"}>My Profile</Link>
+              <Link to={"/"} onClick={handleLogout}>
+                Logout
+              </Link>
+            </>
           ) : (
             <>
               <Link to={"/login"} onClick={handleProfileClick}>

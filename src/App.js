@@ -9,6 +9,7 @@ import SingleArticle from "./pages/SingleArticle.jsx";
 import Login from "./pages/Login.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Register from "./pages/Register.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 import Navbar from "./components/Navbar.jsx";
 import Spinner from "./components/Spinner.jsx";
@@ -30,19 +31,24 @@ const App = () => {
       .catch((err) => setError(err));
   }, []);
 
-  if(isLoading) return <Spinner/>
+  if (isLoading) return <Spinner />;
 
-  if(error) return <ErrorPage error={error}/>
+  if (error) return <ErrorPage error={error} />;
 
   return (
     <div className="App">
-      <Navbar topics={topics}/>
+      <Navbar topics={topics} />
       <Routes>
-        <Route path="/" element={<Home topics={topics}/>} />
+        <Route path="/" element={<Home topics={topics} />} />
         <Route path="/articles" element={<Articles topics={topics} />} />
-        <Route path="/articles/:article_id" element={<SingleArticle topics={topics}/>} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticle topics={topics} />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Dashboard />} />
         <Route path="*" element={<ErrorPage error={404} />} />
       </Routes>
       <ToastContainer />
