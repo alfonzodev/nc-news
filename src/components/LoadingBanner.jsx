@@ -1,8 +1,13 @@
-const LoadingBanner = ({typeOfData}) => {
+const LoadingBanner = ({ typeOfData }) => {
   return (
-    <div className="loading-banner">
-      <p>Loading...</p>
-      <p>Please wait while we fetch your {typeOfData}.</p>
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "4rem",
+      }}
+    >
+      <p className="heading-m">Loading...</p>
+      <p className="heading-s">Please wait while we fetch your {typeOfData}.</p>
     </div>
   );
 };

@@ -1,19 +1,27 @@
 import axios from "axios";
 
-const BASE_URL = "https://top-tier-articles.onrender.com/api/";
+const BASE_URL = "https://top-tier-articles.onrender.com/api";
 
 const api = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
 });
 
-export const fetchArticles = ({topic, sort_by, order, limit, p}) => {
+export const fetchArticles = ({ topic, sort_by, order, limit, p }) => {
   return api
     .get("/articles", { params: { topic, sort_by, order, limit, p } })
     .then(({ data }) => data);
 };
 export const fetchArticleById = (article_id) => {
   return api.get(`/articles/${article_id}`).then(({ data }) => data);
+};
+
+export const fetchMyArticles = () => {
+  return api.get("/my-articles").then(({ data }) => data);
+};
+
+export const deleteArticleById = (article_id) => {
+  return api.delete(`/articles/${article_id}`).then(({ data }) => data);
 };
 
 export const fetchArticleComments = (article_id) => {
@@ -37,11 +45,13 @@ export const loginUser = (email, password) => {
 };
 
 export const logoutUser = () => {
-  return api.get('/users/logout')
-}
+  return api.get("/users/logout");
+};
 
-export const registerUser = ({name, username, email, password}) => {
-  return api.post("/users/register", { name, username, email, password }).then(({ data }) => data);
+export const registerUser = ({ name, username, email, password }) => {
+  return api
+    .post("/users/register", { name, username, email, password })
+    .then(({ data }) => data);
 };
 
 export const getTopics = () => {
