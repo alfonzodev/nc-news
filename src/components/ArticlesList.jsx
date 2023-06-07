@@ -4,10 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import LoadingBanner from "./LoadingBanner";
 
-
 import { fetchArticles } from "../api";
 
-const ArticlesList = ({setError}) => {
+const ArticlesList = ({ setError }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +18,7 @@ const ArticlesList = ({setError}) => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles({topic, sort_by, order})
+    fetchArticles({ topic, sort_by, order })
       .then((data) => {
         setArticles(data.articles);
         setIsLoading(false);
@@ -29,12 +28,18 @@ const ArticlesList = ({setError}) => {
       });
   }, [topic, sort_by, order, searchParams, setError]);
 
-  if(isLoading) return <LoadingBanner typeOfData={"articles"} />
-  
+  if (isLoading) return <LoadingBanner typeOfData={"articles"} />;
+
   return (
     <ul className="articles-list">
       {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />
+        return (
+          <ArticleCard
+            key={article.article_id}
+            article={article}
+            editable={false}
+          />
+        );
       })}
     </ul>
   );
