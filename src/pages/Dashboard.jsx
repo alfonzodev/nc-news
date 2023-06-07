@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <div class="profile-img">
+      <div className="profile-img">
         <img src={user.avatar_url} alt="Image" />
       </div>
       <div className="dashboard-info">

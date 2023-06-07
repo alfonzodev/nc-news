@@ -73,7 +73,9 @@ const Navbar = ({ topics }) => {
         >
           {user ? (
             <>
-              <Link to={"/profile"}>My Profile</Link>
+              <Link to={"/profile"} onClick={handleProfileClick}>
+                My Profile
+              </Link>
               <Link to={"/"} onClick={handleLogout}>
                 Logout
               </Link>
