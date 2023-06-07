@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import MyArticles from "./pages/MyArticles.jsx";
 
 import Navbar from "./components/Navbar.jsx";
 import Spinner from "./components/Spinner.jsx";
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Dashboard />} />
+        <Route path="/profile/my-articles" element={<MyArticles />} />
         <Route path="*" element={<ErrorPage error={404} />} />
       </Routes>
       <ToastContainer />
