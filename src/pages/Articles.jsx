@@ -4,13 +4,12 @@ import { useState } from "react";
 import { capitalizeString } from "../utils/utils";
 
 import ArticlesList from "../components/ArticlesList";
-import TopicsSidebar from "../components/TopicsSidebar";
 
 import ErrorPage from "./ErrorPage";
 
-const Articles = ({topics}) => {
+const Articles = ({ topics }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const topic = searchParams.get("topic");
 
@@ -24,12 +23,10 @@ const Articles = ({topics}) => {
     });
   };
 
-  if(error) return <ErrorPage error={error}/>
+  if (error) return <ErrorPage error={error} />;
 
   return (
-    <div className="articles">
-      <TopicsSidebar topics={topics}/>
-
+    <div className="articles h-[calc(100vh-4rem)">
       <section className="articles-container">
         <h1 className="heading-l">{capitalizeString(topic)} Articles</h1>
         <label htmlFor="sort_by">Sort By</label>
@@ -42,7 +39,7 @@ const Articles = ({topics}) => {
           <option value="votes-asc">Least Voted</option>
         </select>
 
-        <ArticlesList params={searchParams} setError={setError}/>
+        <ArticlesList params={searchParams} setError={setError} />
       </section>
     </div>
   );

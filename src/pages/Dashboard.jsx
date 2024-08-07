@@ -9,9 +9,9 @@ const Dashboard = () => {
   if (!user) return <Navigate to="/" />;
 
   return (
-    <div className="dashboard">
+    <div className="min-h-[calc(100vh-4rem) py-10 max-w-screen-lg w-[95%] m-auto">
       <div className="profile-img">
-        <img src={user.avatar_url} alt="Image" />
+        <img src={user.avatar_url} alt="user profile" />
       </div>
       <div className="dashboard-info">
         <div className="profile-info">

@@ -16,6 +16,7 @@ import Navbar from "./components/Navbar.jsx";
 import Spinner from "./components/Spinner.jsx";
 
 import { getTopics } from "./api.js";
+import MobileMenu from "./components/MobileMenu.jsx";
 
 const App = () => {
   const [topics, setTopics] = useState(null);
@@ -37,15 +38,13 @@ const App = () => {
   if (error) return <ErrorPage error={error} />;
 
   return (
-    <div className="App">
+    <div>
       <Navbar topics={topics} />
+      <MobileMenu topics={topics} />
       <Routes>
         <Route path="/" element={<Home topics={topics} />} />
         <Route path="/articles" element={<Articles topics={topics} />} />
-        <Route
-          path="/articles/:article_id"
-          element={<SingleArticle topics={topics} />}
-        />
+        <Route path="/articles/:article_id" element={<SingleArticle topics={topics} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -53,6 +52,7 @@ const App = () => {
         <Route path="/profile/my-articles" element={<MyArticles />} />
         <Route path="*" element={<ErrorPage error={404} />} />
       </Routes>
+
       <ToastContainer />
     </div>
   );

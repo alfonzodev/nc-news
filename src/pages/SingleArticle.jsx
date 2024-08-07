@@ -6,13 +6,12 @@ import LoadingBanner from "../components/LoadingBanner";
 import CommentsList from "../components/CommentsList";
 import ArticleRating from "../components/ArticleRating";
 import CommentForm from "../components/CommentForm";
-import TopicsSidebar from "../components/TopicsSidebar";
 
 import ErrorPage from "./ErrorPage";
 
 import { timestampToDate } from "../utils/utils.js";
 
-const SingleArticle = ({topics}) => {
+const SingleArticle = ({ topics }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [article, setArticle] = useState(null);
@@ -22,10 +21,7 @@ const SingleArticle = ({topics}) => {
 
   useEffect(() => {
     setIsLoading(true);
-    Promise.all([
-      fetchArticleById(article_id),
-      fetchArticleComments(article_id),
-    ])
+    Promise.all([fetchArticleById(article_id), fetchArticleComments(article_id)])
       .then(([articleResponse, commentsResponse]) => {
         setArticle(articleResponse.article);
         setComments(commentsResponse.comments);
@@ -41,8 +37,7 @@ const SingleArticle = ({topics}) => {
   }
 
   return (
-    <div className="single-article">
-      <TopicsSidebar topics={topics}/>
+    <div className="min-h-[calc(100vh-4rem) py-10 max-w-screen-lg w-[95%] m-auto">
       <section className="article-container">
         {isLoading ? (
           <LoadingBanner typeOfData={"articles"} />
@@ -51,9 +46,7 @@ const SingleArticle = ({topics}) => {
             <section className="article-section">
               <header className="article-header">
                 <h1 className="heading-l">{article.title}</h1>
-                <p className="article-date">
-                  Posted on: {timestampToDate(article.created_at)}
-                </p>
+                <p className="article-date">Posted on: {timestampToDate(article.created_at)}</p>
                 <p className="article-author">Author: {article.author}</p>
               </header>
               <div className="article-img-container">
@@ -68,10 +61,7 @@ const SingleArticle = ({topics}) => {
               </div>
             </section>
             <section className="article-votes-section">
-              <ArticleRating
-                articleVotes={article.votes}
-                articleId={article.article_id}
-              />
+              <ArticleRating articleVotes={article.votes} articleId={article.article_id} />
             </section>
             <section className="comments-section">
               <h2>Comments</h2>
