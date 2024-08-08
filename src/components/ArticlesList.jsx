@@ -31,17 +31,11 @@ const ArticlesList = ({ setError }) => {
   if (isLoading) return <LoadingBanner typeOfData={"articles"} />;
 
   return (
-    <ul className="articles-list">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-10">
       {articles.map((article) => {
-        return (
-          <ArticleCard
-            key={article.article_id}
-            article={article}
-            editable={false}
-          />
-        );
+        return <ArticleCard key={article.article_id} article={article} />;
       })}
-    </ul>
+    </div>
   );
 };
 

@@ -1,25 +1,46 @@
-import { Link, Navigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Navigate, useNavigate, useSearchParams, Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
-import { FaRegNewspaper } from "react-icons/fa";
-import { IoPersonCircleOutline } from "react-icons/io5";
-import { RxChevronDown } from "react-icons/rx";
+import { capitalizeString } from "../utils/utils";
+
+import { FaRegNewspaper, FaBars } from "react-icons/fa";
+import { FaX } from "react-icons/fa6";
 
 import { UserContext } from "../context/User";
 
 import { logoutUser } from "../api";
 
-import "../style/Navbar.css";
+import { MenuContext } from "../context/Menu";
+
+import DropDownMenu from "./ui/DropDown/DropDownMenu";
 
 const Navbar = ({ topics }) => {
   const { user, setUser } = useContext(UserContext);
+
+  const { isMenuOpen, setIsMenuOpen } = useContext(MenuContext);
+  const [searchParams, _] = useSearchParams();
+  const [scrolling, setScrolling] = useState(false);
+
+  const currentTopic = capitalizeString(searchParams.get("topic"));
+
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const [profileClicked, setProfileClicked] = useState(false);
-  const [topicsClicked, setTopicsClicked] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Scroll Event Listener for Navbar Shrink Animation
+    const handleScroll = () => {
+      setScrolling(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleLogout = () => {
-    setProfileClicked((profileClicked) => !profileClicked);
     removeCookie("user", { path: "/" });
     setUser(null);
     return logoutUser()
@@ -29,70 +50,72 @@ const Navbar = ({ topics }) => {
       .catch((err) => console.log(err));
   };
 
-  const handleProfileClick = () => {
-    setProfileClicked((profileClicked) => !profileClicked);
-  };
-  const handleTopicsClick = () => {
-    setTopicsClicked((topicsClicked) => !topicsClicked);
-  };
-
   return (
-    <header className="navbar">
-      <div className="nav-container">
-        <Link to={"/"} id="logo-icon">
-          <FaRegNewspaper />
-        </Link>
-        <div className="topics-dropdown">
-          <div id="arrow-icon" onClick={handleTopicsClick}>
-            <RxChevronDown />
-          </div>
-          <ul className={topicsClicked ? "nav-links active" : "nav-links"}>
-            <Link key={"All"} to={"/articles"} onClick={handleTopicsClick}>
-              <li className="nav-link">All</li>
-            </Link>
-            {topics?.map((topic) => {
-              return (
-                <Link
-                  key={topic.slug}
-                  to={`/articles?topic=${topic.slug}`}
-                  onClick={handleTopicsClick}
-                >
-                  <li className="nav-link">{topic.slug}</li>
-                </Link>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-      <div className="profile-dropdown">
-        <div id="person-icon" onClick={handleProfileClick}>
-          <IoPersonCircleOutline />
-        </div>
-        <ul
-          className={profileClicked ? "profile-links active" : "profile-links"}
+    <div className="h-16 transition-all duration-100 ease-in-out w-full px-4 sticky top-0 left-0 bg-primary z-20 select-none">
+      <nav className="flex relative h-full justify-between items-center">
+        {/* Hamburger Menu Button */}
+        {isMenuOpen ? (
+          <FaX
+            className="text-2xl text-white hover:cursor-pointer hover:text-slate-200"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          />
+        ) : (
+          <FaBars
+            className="text-2xl text-white hover:cursor-pointer"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          />
+        )}
+        {/* Logo */}
+        <div
+          className={`${
+            scrolling ? "h-16" : "h-20"
+          } absolute top-0 left-10 bg-highlight transition-all duration-100 ease-in-out w-auto p-4 flex items-center justify-center z-50 hover:cursor-pointer`}
+          onClick={() => {
+            setIsMenuOpen(false);
+            navigate("/");
+          }}
         >
-          {user ? (
-            <>
-              <Link to={"/profile"} onClick={handleProfileClick}>
-                My Profile
-              </Link>
-              <Link to={"/"} onClick={handleLogout}>
-                Logout
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link to={"/login"} onClick={handleProfileClick}>
-                Login
-              </Link>
-              <Link to={"/register"} onClick={handleProfileClick}>
-                Register
-              </Link>
-            </>
-          )}
-        </ul>
-      </div>
-    </header>
+          <FaRegNewspaper className={`${scrolling ? "text-2xl" : "text-4xl"} text-white`} />
+          <span
+            className={`${
+              scrolling ? "text-[8px]" : "text-[10px]"
+            } absolute font-medium bottom-[2px] text-white`}
+          >
+            NC NEWS
+          </span>
+        </div>
+        {/* Current Topic */}
+        <div className="absolute left-32">
+          <h2 className="text-white font-bold">{currentTopic}</h2>
+        </div>
+
+        {/* User Login */}
+        {user ? (
+          <>
+            <DropDownMenu
+              trigger={
+                <>
+                  <span className="hidden lg:block text-white text-sm font-light">{user.name}</span>
+                  <img
+                    className="max-h-full border-2 border-slate-500 rounded-full group-hover:border-highlight"
+                    src={user.avatar_url}
+                    alt="user profile"
+                  />
+                </>
+              }
+              options={[
+                { payload: { value: "My Profile", link: "/profile" } },
+                { payload: { value: "Log Out", link: "/" }, action: handleLogout },
+              ]}
+            />
+          </>
+        ) : (
+          <Link className="text-sm text-white hover:text-highlight" to="/login">
+            LOGIN
+          </Link>
+        )}
+      </nav>
+    </div>
   );
 };
 

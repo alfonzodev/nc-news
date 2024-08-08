@@ -28,18 +28,13 @@ const MyArticles = () => {
   if (isLoading) return <LoadingBanner typeOfData={"articles"} />;
 
   return (
-    <div className="my-articles">
-      <h1
-        className="heading-l"
-        style={{ textAlign: "center", marginBottom: "2rem " }}
-      >
+    <div className="min-h-[calc(100vh-4rem) py-10 max-w-screen-lg w-[95%] m-auto">
+      <h1 className="heading-l" style={{ textAlign: "center", marginBottom: "2rem " }}>
         My Articles
       </h1>
       {myArticles?.length === 0 ? (
         <section className="no-articles-container">
-          <h2 style={{ textAlign: "center" }}>
-            You have no published articles.
-          </h2>
+          <h2 style={{ textAlign: "center" }}>You have no published articles.</h2>
           <button
             className="btn"
             onClick={() => {

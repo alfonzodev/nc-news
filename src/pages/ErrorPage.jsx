@@ -20,7 +20,7 @@ const ErrorPage = ({ error }) => {
   }, [error]);
 
   return (
-    <div className="error-page">
+    <div className="h-[calc(100vh-4rem)">
       <div className="error-msg-container">
         <h1 className="heading-l">{status}</h1>
         <p>{message}</p>

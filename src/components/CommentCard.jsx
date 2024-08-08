@@ -19,9 +19,7 @@ const CommentCard = ({ comment, setComments }) => {
       deleteCommentById(comment.comment_id)
         .then(() => {
           setComments((comments) => {
-            return comments.filter(
-              (com) => com.comment_id !== comment.comment_id
-            );
+            return comments.filter((com) => com.comment_id !== comment.comment_id);
           });
           setIsLoading(false);
           toast.success("Comment deleted!");
@@ -34,29 +32,29 @@ const CommentCard = ({ comment, setComments }) => {
   };
 
   return (
-    <li className="comment-card">
-      <div className="comment-header">
-        <p className="comment-author">{comment.author}</p>
-        <p className="comment-date">{timestampToDate(comment.created_at)}</p>
+    <div className="p-1">
+      <div className="flex justify-between mb-2">
+        <span className="text-sm font-medium">{comment.author}</span>
+        <span className="text-sm font-extralight">{timestampToDate(comment.created_at)}</span>
       </div>
-      <div className="comment-container">
-        <div className="comment-voting-container">
-          {/* comment voting functionality */}
-        </div>
-        <div className="comment-body">
-          <p>{comment.body}</p>
-        </div>
+      <div className="relative pr-4">
+        <p className="font-light break-words">{comment.body}</p>
+
+        {/* Delete Comment Functionality*/}
         {comment.author === user?.username && !isLoading ? (
-          <button className="btn-comment-del" onClick={handleClick}>
+          <button
+            className="absolute bottom-1 right-1 hover:text-red-600 text-lg"
+            onClick={handleClick}
+          >
             <MdOutlineDeleteOutline />
           </button>
         ) : comment.author === user?.username && isLoading ? (
-          <ClipLoader className="spinner-comment-del" color="#1b9db4" />
+          <ClipLoader className="absolute bottom-1 right-1" color="#003366" size={15} />
         ) : (
           <></>
         )}
       </div>
-    </li>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useContext } from "react";
+import { FaCircleUp, FaCircleDown } from "react-icons/fa6";
 
 import { UserContext } from "../context/User";
 
@@ -52,35 +53,30 @@ const ArticleRating = ({ articleId, articleVotes }) => {
   };
 
   return (
-    <>
-      <h2>Article Votes</h2>
-      <div className="article-rating">
+    <div className="w-full max-w-screen-sm flex gap-6 items-center ">
+      <h2 className="text-xl">Article Rating</h2>
+      <div className="flex items-center gap-2">
         <button
-          className="btn-article-vote"
+          className="cursor-pointer text-xl text-gray-400 hover:text-gray-800"
           onClick={() => {
             decrementVote();
           }}
           disabled={hasVotedDown}
         >
-          -
+          <FaCircleDown />
         </button>
-        <input
-          type="text"
-          className="article-vote-count"
-          value={votes}
-          disabled={true}
-        />
+        <span className="font-medium px-2">{votes}</span>
         <button
-          className="btn-article-vote"
+          className="cursor-pointer text-xl text-gray-400 hover:text-gray-800"
           onClick={() => {
             incrementVote();
           }}
           disabled={hasVotedUp}
         >
-          +
+          <FaCircleUp />
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
