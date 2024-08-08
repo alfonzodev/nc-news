@@ -37,7 +37,7 @@ const SingleArticle = ({ topics }) => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] py-10 max-w-screen-lg w-[95%] m-auto">
+    <main className="min-h-[calc(100vh-4rem)] py-10 max-w-screen-lg w-[95%] m-auto">
       <section className="bg-white p-6">
         {isLoading ? (
           <LoadingBanner typeOfData={"articles"} />
@@ -83,7 +83,7 @@ const SingleArticle = ({ topics }) => {
           </>
         )}
       </section>
-    </div>
+    </main>
   );
 };
 

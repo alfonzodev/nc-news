@@ -26,10 +26,12 @@ const Articles = ({ topics }) => {
   if (error) return <ErrorPage error={error} />;
 
   return (
-    <div className="articles h-[calc(100vh-4rem)">
-      <section className="articles-container">
-        <h1 className="heading-l">{capitalizeString(topic)} Articles</h1>
-        <label htmlFor="sort_by">Sort By</label>
+    <main className="min-h-[calc(100vh-4rem) py-10 max-w-screen-lg w-[95%] m-auto">
+      <h1 className="text-3xl font-extralight mb-4">{capitalizeString(topic)} </h1>
+      <div className="mb-4 p-2 flex items-center">
+        <label className="font-medium mr-4" htmlFor="sort_by">
+          Sort By
+        </label>
         <select name="sort_by" id="sorting" onChange={handleChange}>
           <option value="created_at-desc">Date - Descending</option>
           <option value="created_at-asc">Date - Ascending</option>
@@ -38,10 +40,9 @@ const Articles = ({ topics }) => {
           <option value="votes-desc">Most Voted</option>
           <option value="votes-asc">Least Voted</option>
         </select>
-
-        <ArticlesList params={searchParams} setError={setError} />
-      </section>
-    </div>
+      </div>
+      <ArticlesList setError={setError} />
+    </main>
   );
 };
 

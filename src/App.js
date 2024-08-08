@@ -47,7 +47,6 @@ const App = () => {
         <Route path="/articles/:article_id" element={<SingleArticle topics={topics} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Dashboard />} />
         <Route path="/profile/my-articles" element={<MyArticles />} />
         <Route path="*" element={<ErrorPage error={404} />} />
