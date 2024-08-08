@@ -110,7 +110,7 @@ const Navbar = ({ topics }) => {
             />
           </>
         ) : (
-          <Link className="text-white text-l hover:text-highlight" to="/login">
+          <Link className="text-sm text-white hover:text-highlight" to="/login">
             LOGIN
           </Link>
         )}
