@@ -30,17 +30,6 @@ To Start Server:
 
 `npm start`  
 
-
-## Reflection
-
-This was a week long project completed as part of the bootcamp at Northcoders.
-
-One of the main challenges I ran into was Authentication/Authorization. 
-
-This was not part of the project requirements, and the backend api was not developed originally to support this feature. But this was something I really wanted to learn about. So on my free time I worked on refactoring the api, and this lead me to spend a few days researching authentication, authorization with JWT, cookies and Cross-Origin Resource Sharing.
-
-This turned out to be a highly interesting topic, and I chose to allocate more time than originally planned into the development of the login/register features, hence the intial unrefined state of the app's design.
-
 ## Notes on CORS
 
 At the moment, CORS is enabled in backend with a list of two allowed origins: 
