@@ -12,7 +12,7 @@ const ArticleCard = ({ article }) => {
     >
       <img
         className="w-full h-36 sm:h-44 md:h-52 object-cover mb-1"
-        src={article.img_url}
+        src={article.article_img_url}
         alt={article.topic}
       />
       <h1 className="text-lg font-bold group-hover:text-highlight mb-2">{article.title}</h1>
