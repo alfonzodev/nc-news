@@ -54,7 +54,7 @@ const SingleArticle = ({ topics }) => {
               <div className="mb-4">
                 <img
                   className="w-full h-auto object-cover rounded-sm"
-                  src={article.article_img_url}
+                  src={article.img_url}
                   alt={`${article.topic}`}
                 />
               </div>
