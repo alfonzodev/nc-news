@@ -41,7 +41,7 @@ const CommentForm = ({ articleId, setComments }) => {
       {user && (
         <div className="flex justify-start items-center gap-2 mb-2">
           <img
-            src={user.avatar_img_url}
+            src={user.avatar_url}
             alt="user profile"
             className="w-8 border border-gray-400 rounded-full"
           />

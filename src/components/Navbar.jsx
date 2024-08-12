@@ -17,6 +17,7 @@ import DropDownMenu from "./ui/DropDown/DropDownMenu";
 
 const Navbar = ({ topics }) => {
   const { user, setUser } = useContext(UserContext);
+
   const { isMenuOpen, setIsMenuOpen } = useContext(MenuContext);
   const [searchParams, _] = useSearchParams();
   const [scrolling, setScrolling] = useState(false);
@@ -97,7 +98,7 @@ const Navbar = ({ topics }) => {
                   <span className="hidden lg:block text-white text-sm font-light">{user.name}</span>
                   <img
                     className="max-h-full border-2 border-slate-500 rounded-full group-hover:border-highlight"
-                    src={user.avatar_img_url}
+                    src={user.avatar_url}
                     alt="user profile"
                   />
                 </>
