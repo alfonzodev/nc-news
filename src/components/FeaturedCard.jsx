@@ -4,11 +4,7 @@ const FeaturedCard = ({ article }) => {
   return (
     <div className="border-t border-gray-300 text-gray-700 pt-1 pb-4">
       <Link to={`/articles/${article.article_id}`}>
-        <img
-          className="h-24 w-24 mr-2 mb-2 float-left object-cover"
-          src={article.article_img_url}
-          alt=""
-        />
+        <img className="h-24 w-24 mr-2 mb-2 float-left object-cover" src={article.img_url} alt="" />
       </Link>
 
       <Link to={`/articles/${article.article_id}`}>

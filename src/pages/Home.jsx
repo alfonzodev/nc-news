@@ -33,7 +33,7 @@ const Home = ({ topics }) => {
       >
         <h1 className=" py-2 text-3xl text-center font-bold">{mostVotedArticle?.title}</h1>
         <div className="flex items-center justify-center">
-          <img src={mostVotedArticle?.article_img_url} alt="" />
+          <img src={mostVotedArticle?.img_url} alt="" />
         </div>
         <div>
           <p className="font-medium text-justify">
