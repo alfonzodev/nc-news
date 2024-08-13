@@ -25,10 +25,8 @@ export const fetchMyArticles = () => {
   return api.get("/my-articles").then(({ data }) => data);
 };
 
-export const postArticle = ({ author, body, title, topic, article_img_url }) => {
-  return api
-    .post("/articles", { author, body, title, topic, article_img_url })
-    .then(({ data }) => data);
+export const postArticle = ({ author, body, title, topic, img_id }) => {
+  return api.post("/articles", { author, body, title, topic, img_id }).then(({ data }) => data);
 };
 
 export const deleteArticleById = (article_id) => {
