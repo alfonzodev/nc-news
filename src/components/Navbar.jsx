@@ -97,7 +97,7 @@ const Navbar = ({ topics }) => {
                 <>
                   <span className="hidden lg:block text-white text-sm font-light">{user.name}</span>
                   <img
-                    className="max-h-full border-2 border-slate-500 rounded-full group-hover:border-highlight"
+                    className="w-10 h-10 object-cover border-2 border-slate-500 rounded-full group-hover:border-highlight"
                     src={user.avatar_url}
                     alt="user profile"
                   />

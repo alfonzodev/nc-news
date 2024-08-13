@@ -4,7 +4,7 @@ import { UserContext } from "../context/User";
 
 const Dashboard = () => {
   let navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user) return <Navigate to="/" />;
 
@@ -23,24 +23,14 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-gray-800">@{user.username}</h1>
             <p className="text-xl text-gray-600">{user.name}</p>
           </div>
-          <div className="flex space-x-4">
-            <button
-              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
-              onClick={() => {
-                navigate("/profile/my-articles");
-              }}
-            >
-              My Articles
-            </button>
-            <button
-              className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
-              onClick={() => {
-                navigate("/articles/create");
-              }}
-            >
-              Post Article
-            </button>
-          </div>
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+            onClick={() => {
+              navigate("/profile/my-articles");
+            }}
+          >
+            My Articles
+          </button>
         </div>
       </div>
     </div>
