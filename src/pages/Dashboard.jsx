@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className="flex flex-col items-center">
         <div className="mb-6">
           <img
-            src={user.avatar_url}
+            src={user.avatar_img_url}
             alt="user profile"
             className="w-32 h-32 rounded-full border-4 border-gray-200 shadow-lg"
           />
