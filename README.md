@@ -1,39 +1,40 @@
-# 📰 NC News (in progress...)
+# NC News (MVP)
 
-An articles web app built with React.
-<br><br>
-**live version** - https://nc-top-news.netlify.app/
+**NC News** is a web application for managing and interacting with news articles, developed using React.
 
-## Current State of App
+**Live version**: https://nc-top-news.netlify.app/
 
-The app is still in development. As of now users can register, login, view articles, comment on articles and upvote/downvote articles. If a user leaves the page, the session is stored in a cookie.
+## Current Features
 
-The following features still need implementing:
-- Dashboard page
-- Posting an article
-- Articles pagination
-- Upvote/downvote of comments
+The MVP of NC News includes the following capabilities:
 
-(Please refer to the wireframe in this repo for an overview of these features)
+- **User Registration & Login**: Users can create accounts and log in securely.
+- **Article Posting**: Create and post news articles.
+- **Article Viewing**: Access and read a range of news articles.
+- **Commenting**: Users can comment on articles.
+- **Upvoting/Downvoting**: Articles can be upvoted or downvoted to reflect user engagement (5 most voted articles end up on the homepage).
+- **Session Management**: User sessions are maintained using cookies.
 
-Also, there are some improvements to be made in regards to design and responsiveness.
+## Planned Features
 
-## Installation and Setup Instructions
+The following features are planned for future updates:
 
-Clone down this repository. You will need `node 18.15.0 LTS +` and `npm` installed globally on your machine.  
+- **Article Pagination**: Implementation of pagination for articles.
+- **Comment Interaction**: Upvoting and downvoting of comments.
 
-Installation:
+## Installation and Setup
 
-`npm install`  
+To get started with NC News:
 
-To Start Server:
+1. **Clone the Repository**
+2. **Install Dependencies** with `npm install`
+3. **Start Development Server** with `npm start`
 
-`npm start`  
+## CORS Configuration
 
-## Notes on CORS
+Cross Origin Resource Sharing is currently configured with the following allowed origins:
 
-At the moment, CORS is enabled in backend with a list of two allowed origins: 
 - https://nc-top-news.netlify.app
 - http://localhost:3000
 
-Therefore, if you run this app in localhost and get CORS errors, please check that your local server is using port 3000.
+If you experience CORS issues while running the application locally, ensure your local server is using port 3000.
