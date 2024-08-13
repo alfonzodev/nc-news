@@ -12,6 +12,11 @@ export const fetchArticles = ({ topic, sort_by, order, limit, p }) => {
     .get("/articles", { params: { topic, sort_by, order, limit, p } })
     .then(({ data }) => data);
 };
+
+export const fetchImages = () => {
+  return api.get("/gallery").then(({ data }) => data);
+};
+
 export const fetchArticleById = (article_id) => {
   return api.get(`/articles/${article_id}`).then(({ data }) => data);
 };
