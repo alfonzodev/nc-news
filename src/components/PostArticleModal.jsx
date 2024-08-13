@@ -17,6 +17,7 @@ const PostArticleModal = ({ closeModal, topics, setMyArticles }) => {
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
   const [isTopicsDropDownOpen, setIsTopicsDropDownOpen] = useState(false);
+
   const [article, setArticle] = useState({
     author: user.username,
     body: "",
@@ -69,7 +70,7 @@ const PostArticleModal = ({ closeModal, topics, setMyArticles }) => {
       .then(({ article }) => {
         setIsSending(false);
         closeModal();
-        setMyArticles((articles) => [article, ...articles]);
+        setMyArticles((articles) => [{ ...article, img_url: selectedImageUrl }, ...articles]);
       })
       .catch((err) => {
         console.log(err);
