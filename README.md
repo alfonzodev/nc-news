@@ -1,4 +1,4 @@
-# NC News (MVP)
+# NC News
 
 **NC News** is a web application for managing and interacting with news articles, developed using React.
 
