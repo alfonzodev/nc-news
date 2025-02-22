@@ -2,8 +2,6 @@
 
 **NC News** is a web application for managing and interacting with news articles, developed using React.
 
-**Live version**: https://nc-top-news.netlify.app/
-
 ## Current Features
 
 The MVP of NC News includes the following capabilities:
@@ -29,12 +27,3 @@ To get started with NC News:
 1. **Clone the Repository**
 2. **Install Dependencies** with `npm install`
 3. **Start Development Server** with `npm start`
-
-## CORS Configuration
-
-Cross Origin Resource Sharing is currently configured with the following allowed origins:
-
-- https://nc-top-news.netlify.app
-- http://localhost:3000
-
-If you experience CORS issues while running the application locally, ensure your local server is using port 3000.
